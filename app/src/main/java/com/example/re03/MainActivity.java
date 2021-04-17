@@ -18,5 +18,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent=new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
         });
+        Button button1=findViewById(R.id.pu01);
+        button1.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, PuRecyclerActivity.class);
+            startActivity(intent);
+        });
     }
 }
