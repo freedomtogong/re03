@@ -10,18 +10,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 
 public class AtaggerAdapter extends RecyclerView.Adapter<AtaggerAdapter.LinearViewHolder> {
-    private Context context;
+    private final Context context;
+    MyOnclickLinstener myOnclickLinstener;
 
-    public AtaggerAdapter(Context context) {
+    public AtaggerAdapter(Context context, MyOnclickLinstener myOnclickLinstener) {
         this.context = context;
+        this.myOnclickLinstener = myOnclickLinstener;
     }
+
 
     @NonNull
     @NotNull
     @Override
     public LinearViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        LinearViewHolder linearViewHolder = new LinearViewHolder(LayoutInflater.from(context).inflate(R.layout.item01,parent,false));
-        return linearViewHolder;
+        return new LinearViewHolder(LayoutInflater.from(context).inflate(R.layout.item01,parent,false));
     }
 
     @Override
@@ -34,6 +36,7 @@ public class AtaggerAdapter extends RecyclerView.Adapter<AtaggerAdapter.LinearVi
             holder.imageView.setImageResource(R.drawable.b);
 
         }
+        myOnclickLinstener.setOnclick(position);
 
     }
 
@@ -49,5 +52,8 @@ public class AtaggerAdapter extends RecyclerView.Adapter<AtaggerAdapter.LinearVi
             super(itemView);
             imageView=itemView.findViewById(R.id.iv);
         }
+    }
+    interface MyOnclickLinstener{
+        void setOnclick(int pos);
     }
 }
